@@ -19,11 +19,11 @@ jobs:
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v18
         with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: frontend
           environment_name: Frontend-env
           existing_bucket_name: elasticbeanstalk-eu-west-1-211125790660
           region: eu-west-1
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
-          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
